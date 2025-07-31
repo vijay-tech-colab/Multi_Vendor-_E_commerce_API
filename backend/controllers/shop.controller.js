@@ -70,7 +70,7 @@ exports.updateShop = catchAsyncHandler(async (req, res, next) => {
     shop.name = req.body.name || shop.name;
     shop.description = req.body.description || shop.description;
 
-    await shop.save();
+    await shop.save({validateBeforeSave : true});
 
     res.status(200).json({
         message: "Shop updated successfully.",
